@@ -1,0 +1,14 @@
+merge()
+Método que mescla os arquivos divididos em um único arquivo. Este método requer o arquivo de manifesto gerado pelo processo split () junto com os arquivos divididos e aceita os seguintes argumentos
+
+input_dir (str) - Caminho para o diretório que contém os arquivos divididos (obrigatório)
+
+output_file (str) - Caminho para o arquivo de saída final (opcional). Se não for fornecido, o nome do arquivo final mesclado é derivado do nome do arquivo dividido e colocado no mesmo diretório de entrada.
+Obs: No Windows ocorre um maldito erro de permissão
+PermissionError: [WinError 5] Acesso negado:
+
+manifest_file (str) - Caminho para o arquivo de manifesto (opcional). Se não for fornecido, o processo irá procurar o arquivo dentro do input_dir
+
+retorno de chamada (chamável) - função de retorno de chamada (opcional). A função de retorno de chamada deve aceitar dois argumentos [func (str, int)] - caminho completo para o arquivo de saída final, tamanho do arquivo (bytes).
+
+cleanup (bool) - (Opcional) Se True, todos os arquivos divididos, o arquivo de manifesto serão excluídos após a mesclagem, deixando apenas o arquivo mesclado.

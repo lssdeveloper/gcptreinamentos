@@ -1,0 +1,38 @@
+A divisão de arquivos facilitada para os programadores Python!
+
+Um módulo python que pode dividir arquivos de qualquer tamanho em vários pedaços e também mesclá-los de volta. Este módulo pode ser usado em arquivos estruturados e não estruturados. As divisões do arquivo são numeradas de 1 a n da seguinte forma:
+
+Para usar é simples, instalar o módulo
+
+pip install filesplit
+
+Cria uma instância
+
+from fsplit.filesplit import Filesplit
+
+fs = Filesplit()
+
+split()
+Método que divide o arquivo em vários pedaços. Este método aceita os seguintes argumentos
+
+file(str) - Caminho para o arquivo de origem (obrigatório)
+
+split_size (int) - tamanho da divisão em bytes (obrigatório). Cada divisão corresponderá ao tamanho fornecido.
+
+output_dir (str) - Diretório para gravar os arquivos divididos (opcional). Se não for fornecido, o diretório atual será usado.
+
+retorno de chamada (chamável) - função de retorno de chamada (opcional). A função de retorno de chamada deve aceitar dois argumentos [func (str, int)] - caminho completo para o arquivo dividido, tamanho do arquivo dividido (bytes). A função de retorno de chamada será chamada após cada divisão de arquivo.
+
+
+Por padrão, o método de divisão divide o arquivo no modo binário mantendo a codificação e as terminações de linha como estão na fonte que funciona para a maioria dos casos de uso. No entanto, o módulo também oferece mais flexibilidade para controlar as divisões, passando argumentos de palavras-chave adicionais
+
+newline (bool) - (Opcional) Quando definido como True, os arquivos divididos não terão linhas incompletas. Este sinalizador pode ser útil ao dividir o arquivo estruturado.
+
+include_header (bool) - (Opcional) Quando definido como True, a primeira linha no arquivo de origem é considerada como um cabeçalho e cada divisão incluirá o cabeçalho. Este sinalizador pode ser útil ao dividir o arquivo estruturado.
+
+encoding (str) - (Opcional) Quando fornecido, as divisões são tratadas no modo de texto com a codificação especificada. O arquivo é lido e os arquivos divididos são gravados com a mesma codificação. Isso pode ser útil para arquivos de texto e requer que a codificação do arquivo de origem seja conhecida de antemão.
+
+split_file_encoding (str) - (Opcional) No caso, os arquivos divididos devem ser de codificação diferente da fonte, isso pode ser definido. Nota: Se split_file_encoding for especificado, a codificação também precisa ser especificada.
+#*****************************************************************************************************
+O processo de divisão cria um arquivo de manifesto fs_manifest.csv no diretório de saída. Este arquivo de manifesto é necessário para a operação de mesclagem.
+#*****************************************************************************************************
